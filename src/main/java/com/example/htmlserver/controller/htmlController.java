@@ -1,6 +1,7 @@
 package com.example.htmlserver.controller;
 
 import com.example.htmlserver.server.htmlServer;
+import com.example.htmlserver.vo.LoginVo;
 import com.example.htmlserver.vo.PlayListVO;
 import com.example.htmlserver.vo.SongsVO;
 import com.example.htmlserver.vo.UserVo;
@@ -80,6 +81,21 @@ public class htmlController {
     @PostMapping("/getCopyrightPage")
     public String getCopyrightPage(@RequestBody SongsVO songsVO){
         String html=server.getPageByName("copyrightPage");
+        html=html.replace("?",Long.toString(songsVO.getId()));
+        html=html.replace("localhost",IPServersMusic);
+        return html;
+    }
+    @PostMapping("/authenticator")
+    public String getAuthenticator(@RequestBody LoginVo loginVo){
+        String html=server.getPageByName("authenticator");
+        html=html.replace("?",Long.toString(loginVo.getId()));
+        html=html.replace("@",Long.toString(loginVo.getUserId()));
+        html=html.replace("localhost",IPServersMusic);
+        return html;
+    }
+    @PostMapping("/PlaySongPage")
+    public String getPlatSongPage(@RequestBody SongsVO songsVO){
+        String html=server.getPageByName("playSong");
         html=html.replace("?",Long.toString(songsVO.getId()));
         html=html.replace("localhost",IPServersMusic);
         return html;
