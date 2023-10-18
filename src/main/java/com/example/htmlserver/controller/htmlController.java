@@ -53,8 +53,8 @@ public class htmlController {
     @PostMapping("/HomePage")
     public String getHomePage(@RequestBody UserVo userVo){
         String html=server.getPageByName("HomePage");
-        html=html.replace("?",Long.toString(userVo.getId()));
         html=html.replace("localhost",IPServersMusic);
+        html=html.replace("?",Long.toString(userVo.getId()));
         return html;
     }
     @PostMapping("/displaySongInPlayList")
@@ -75,6 +75,20 @@ public class htmlController {
     public String showUserSongs(@RequestBody UserVo userVo){
         String html=server.getPageByName("showUserSongs");
         html=html.replace("?",Long.toString(userVo.getId()));
+        html=html.replace("localhost",IPServersMusic);
+        return html;
+    }
+    @PostMapping("/addPlayList")
+    public String addPlayList(@RequestBody PlayListVO playListVO){
+        String html=server.getPageByName("addPlayList");
+        html=html.replace("@",Long.toString(playListVO.getUserId()));
+        html=html.replace("localhost",IPServersMusic);
+        return html;
+    }
+    @PostMapping("/addSongsToPlayList")
+    public String addSongsToPlayList(@RequestBody PlayListVO playListVO){
+        String html=server.getPageByName("addSongToPlayList");
+        html=html.replace("?",Long.toString(playListVO.getId()));
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
