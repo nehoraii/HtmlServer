@@ -1,10 +1,7 @@
 package com.example.htmlserver.controller;
 
 import com.example.htmlserver.server.htmlServer;
-import com.example.htmlserver.vo.LoginVo;
-import com.example.htmlserver.vo.PlayListVO;
-import com.example.htmlserver.vo.SongsVO;
-import com.example.htmlserver.vo.UserVo;
+import com.example.htmlserver.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -108,9 +105,30 @@ public class htmlController {
         return html;
     }
     @PostMapping("/PlaySongPage")
-    public String getPlatSongPage(@RequestBody SongsVO songsVO){
+    public String getPlaySongPage(@RequestBody SongsVO songsVO){
         String html=server.getPageByName("playSong");
         html=html.replace("?",Long.toString(songsVO.getId()));
+        html=html.replace("localhost",IPServersMusic);
+        return html;
+    }
+    @PostMapping("/PlayPlayList")
+    public String getPlayPlayListPage(@RequestBody PlayListVO playListVO){
+        String html=server.getPageByName("playPlayList");
+        html=html.replace("?",Long.toString(playListVO.getId()));
+        html=html.replace("localhost",IPServersMusic);
+        return html;
+    }
+    @PostMapping("/PlayAlbum")
+    public String PlayAlbum(@RequestBody AlbumsVO albumsVO){
+        String html=server.getPageByName("playAlbum");
+        html=html.replace("?",Long.toString(albumsVO.getId()));
+        html=html.replace("localhost",IPServersMusic);
+        return html;
+    }
+    @PostMapping("/displaySongInAlbum")
+    public String displaySongInAlbum(@RequestBody AlbumsVO albumsVO){
+        String html=server.getPageByName("displaySongInAlbum");
+        html=html.replace("?",Long.toString(albumsVO.getId()));
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
