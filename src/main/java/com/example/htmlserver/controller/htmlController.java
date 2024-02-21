@@ -20,6 +20,7 @@ public class htmlController {
     @GetMapping("/firstPage")
     public String getFirstPage(){
         String html=server.getPageByName("firstPage");
+        html=html.replace("localhost",IPServersLogin);
         return html;
     }
     @GetMapping("/con")
@@ -28,10 +29,11 @@ public class htmlController {
         html=html.replace("localhost",IPServersLogin);
         return html;
     }
-    @GetMapping("/getSearchPage")
-    public String getSearchPage(){
+    @PostMapping("/getSearchPage")
+    public String getSearchPage(@RequestBody UserVo userVo){
         String html=server.getPageByName("searchPage");
         html=html.replace("localhost",IPServersLogin);
+        html=html.replace("?",Long.toString(userVo.getId()));
         return html;
     }
     @GetMapping("/cre")
@@ -59,6 +61,7 @@ public class htmlController {
         String html=server.getPageByName("displaySongInPlayList");
         html=html.replace("localhost",IPServersMusic);
         html=html.replace("?",Long.toString(playListVO.getId()));
+        html=html.replace("@",Long.toString(playListVO.getUserId()));
         return html;
     }
     @PostMapping("/addAlbum")
@@ -86,13 +89,7 @@ public class htmlController {
     public String addSongsToPlayList(@RequestBody PlayListVO playListVO){
         String html=server.getPageByName("addSongToPlayList");
         html=html.replace("?",Long.toString(playListVO.getId()));
-        html=html.replace("localhost",IPServersMusic);
-        return html;
-    }
-    @PostMapping("/getCopyrightPage")
-    public String getCopyrightPage(@RequestBody SongsVO songsVO){
-        String html=server.getPageByName("copyrightPage");
-        html=html.replace("?",Long.toString(songsVO.getId()));
+        html=html.replace("@",Long.toString(playListVO.getUserId()));
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
