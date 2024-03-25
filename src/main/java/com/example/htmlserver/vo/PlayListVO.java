@@ -8,11 +8,4 @@ import java.util.Date;
 public class PlayListVO {
     private Long id;
     private long userId;
-    private String playListName;
-    private long lengthPlayList;
-    private boolean public1;
-    private Date date;
-    private byte[] image;
-
-
 }

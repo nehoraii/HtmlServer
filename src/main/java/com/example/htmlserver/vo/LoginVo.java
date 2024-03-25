@@ -7,10 +7,6 @@ import java.util.Date;
 public class LoginVo {
     private Long id;
     private long userId;
-    private String pass;
-    private String ip;
-    private boolean sec;
-    private Date date;
-    private String secretCode;
+
 
 }
