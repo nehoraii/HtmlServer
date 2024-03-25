@@ -35,97 +35,97 @@ public class HtmlController {
         html=html.replace("localhost",IPServersLogin);
         return html;
     }
-    @PostMapping("/getSearchPage")
-    public String getSearchPage(@RequestBody UserVo userVo){
+    @GetMapping("/getSearchPage")
+    public String getSearchPage(){
         String html=server.getPageByName("searchPage");
         html=html.replace("localhost",IPServersLogin);
-        html=html.replace("?",Long.toString(userVo.getId()));
+//        html=html.replace("?",Long.toString(userVo.getId()));
         return html;
     }
-    @PostMapping("/getPlayListUser")
-    public String getPlayListUser(@RequestBody UserVo userVo){
+    @GetMapping("/getPlayListUser")
+    public String getPlayListUser(){
         String html=server.getPageByName("showPlayList");
         html=html.replace("localhost",IPServersMusic);
-        html=html.replace("?",Long.toString(userVo.getId()));
+//        html=html.replace("?",Long.toString(userVo.getId()));
         return html;
     }
-    @PostMapping("/HomePage")
-    public String getHomePage(@RequestBody UserVo userVo){
+    @GetMapping("/HomePage")
+    public String getHomePage(){
         String html=server.getPageByName("HomePage");
         html=html.replace("localhost",IPServersMusic);
-        html=html.replace("?",Long.toString(userVo.getId()));
+        //html=html.replace("?",Long.toString(userVo.getId()));
         return html;
     }
-    @PostMapping("/displaySongInPlayList")
-    public String getDisplaySongInPlayListPage(@RequestBody PlayListVO playListVO){
+    @GetMapping("/displaySongInPlayList")
+    public String getDisplaySongInPlayListPage(){
         String html=server.getPageByName("displaySongInPlayList");
         html=html.replace("localhost",IPServersMusic);
-        html=html.replace("?",Long.toString(playListVO.getId()));
-        html=html.replace("@",Long.toString(playListVO.getUserId()));
+        //html=html.replace("?",Long.toString(playListVO.getId()));
+        //html=html.replace("@",Long.toString(playListVO.getUserId()));
         return html;
     }
-    @PostMapping("/addAlbum")
-    public String getAddAlbumPage(@RequestBody UserVo userVo){
+    @GetMapping("/addAlbum")
+    public String getAddAlbumPage(){
         String html=server.getPageByName("addAlbum");
         html=html.replace("localhost",IPServersMusic);
-        html=html.replace("?",Long.toString(userVo.getId()));
+        //html=html.replace("?",Long.toString(userVo.getId()));
         return html;
     }
-    @PostMapping("/showUserSongs")
-    public String getShowUserSongsPage(@RequestBody UserVo userVo){
+    @GetMapping("/showUserSongs")
+    public String getShowUserSongsPage(){
         String html=server.getPageByName("showUserSongs");
-        html=html.replace("?",Long.toString(userVo.getId()));
+        //html=html.replace("?",Long.toString(userVo.getId()));
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
-    @PostMapping("/addPlayList")
-    public String getAddPlayListPage(@RequestBody PlayListVO playListVO){
+    @GetMapping("/addPlayList")
+    public String getAddPlayListPage(){
         String html=server.getPageByName("addPlayList");
-        html=html.replace("@",Long.toString(playListVO.getUserId()));
+        //html=html.replace("@",Long.toString(playListVO.getUserId()));
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
-    @PostMapping("/addSongsToPlayList")
-    public String getAddSongsToPlayListPage(@RequestBody PlayListVO playListVO){
+    @GetMapping("/addSongsToPlayList")
+    public String getAddSongsToPlayListPage(){
         String html=server.getPageByName("addSongToPlayList");
-        html=html.replace("?",Long.toString(playListVO.getId()));
-        html=html.replace("@",Long.toString(playListVO.getUserId()));
+        //html=html.replace("?",Long.toString(playListVO.getId()));
+        //html=html.replace("@",Long.toString(playListVO.getUserId()));
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
-    @PostMapping("/authenticator")
-    public String getAuthenticatorPage(@RequestBody LoginVo loginVo){
+    @GetMapping("/authenticator")
+    public String getAuthenticatorPage(){
         String html=server.getPageByName("authenticator");
-        html=html.replace("?",Long.toString(loginVo.getId()));
-        html=html.replace("@",Long.toString(loginVo.getUserId()));
+        //html=html.replace("?",Long.toString(loginVo.getId()));
+        //html=html.replace("@",Long.toString(loginVo.getUserId()));
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
-    @PostMapping("/PlaySongPage")
-    public String getPlaySongPage(@RequestBody SongVO songsVO){
+    @GetMapping("/PlaySongPage")
+    public String getPlaySongPage(){
         String html=server.getPageByName("playSong");
-        html=html.replace("?",Long.toString(songsVO.getId()));
+        //html=html.replace("?",Long.toString(songsVO.getId()));
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
-    @PostMapping("/PlayPlayList")
-    public String getPlayPlayListPage(@RequestBody PlayListVO playListVO){
+    @GetMapping("/PlayPlayList")
+    public String getPlayPlayListPage(){
         String html=server.getPageByName("playPlayList");
-        html=html.replace("?",Long.toString(playListVO.getId()));
+        //html=html.replace("?",Long.toString(playListVO.getId()));
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
-    @PostMapping("/PlayAlbum")
-    public String getPlayAlbumPage(@RequestBody AlbumsVO albumsVO){
+    @GetMapping("/PlayAlbum")
+    public String getPlayAlbumPage(){
         String html=server.getPageByName("playAlbum");
-        html=html.replace("?",Long.toString(albumsVO.getId()));
+        //html=html.replace("?",Long.toString(albumsVO.getId()));
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
-    @PostMapping("/displaySongInAlbum")
-    public String getDisplaySongInAlbumPage(@RequestBody AlbumsVO albumsVO){
+    @GetMapping("/displaySongInAlbum")
+    public String getDisplaySongInAlbumPage(){
         String html=server.getPageByName("displaySongInAlbum");
-        html=html.replace("?",Long.toString(albumsVO.getId()));
+        //html=html.replace("?",Long.toString(albumsVO.getId()));
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
