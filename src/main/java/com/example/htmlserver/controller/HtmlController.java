@@ -1,7 +1,6 @@
 package com.example.htmlserver.controller;
 
 import com.example.htmlserver.server.HtmlServer;
-import com.example.htmlserver.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
