@@ -2,8 +2,7 @@ package com.example.htmlserver.vo;
 
 import lombok.Data;
 
-import java.util.Date;
-
+//מחלקה המתארת אובייקט מסוג שיר ובו את הנתונים הרלוונטים לנו
 @Data
 public class SongVO {
     private long id;

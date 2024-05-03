@@ -11,29 +11,50 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("World")
 @CrossOrigin(origins = "*")
+//קלאס שאחראי לנתב את הבקשות שבאות מהקליינטים ומפנה אותם לפי כתובת URL לםונקציה הנכונה
 public class HtmlController {
-    private String IPServersLogin="127.0.0.1";
-    private String IPServersMusic="127.0.0.1";
+    private String IPServersLogin="127.0.0.1"; //שדה המכיל את כתובת ה-IP של השרת LOGIN
+    private String IPServersMusic="127.0.0.1"; //שדה המכיל את כתובת ה-IP של שרת המוזיקה
     @Autowired
-    private HtmlServer server;
+    private HtmlServer server; //אובייקט הכלה של הקלאס HtmlServer
+    /*מקבלת: כלום.
+    מבצעת: מבקשת מ- HtmlServer את הדף הראשון ומחליפה לכתובות ה-IP הרצויות.
+    מחזירה: את דף ה-HTML העדכני.
+    */
     @GetMapping("/firstPage")
     public String getFirstPage(){
         String html=server.getPageByName("firstPage");
         html=html.replace("localhost",IPServersLogin);
         return html;
     }
+    /*מקבלת: כלום.
+    מבצעת: מבקשת מ- HtmlServer את דף החיבור ומחליפה לכתובות ה-IP הרצויות.
+    מחזירה: את דף ה-HTML העדכני.
+    */
     @GetMapping("/con")
     public String getConPage(){
         String html=server.getPageByName("conPage");
         html=html.replace("localhost",IPServersLogin);
         return html;
     }
+
+    /*
+    * מקבלת: כלום.
+    מבצעת: מבקשת מ- HtmlServer את דף יצרת משתמש ומחליפה לכתובות ה-IP הרצויות.
+    מחזירה: את דף ה-HTML העדכני.
+    */
     @GetMapping("/cre")
     public String getCrePage(){
         String html=server.getPageByName("createPage");
         html=html.replace("localhost",IPServersLogin);
         return html;
     }
+
+    /*
+       מקבלת: כלום.
+       מבצעת: מבקשת מ- HtmlServer את דף החיפוש ומחליפה לכתובות ה-IP הרצויות.
+       מחזירה: את דף ה-HTML העדכני.
+       **/
     @GetMapping("/getSearchPage")
     public String getSearchPage(){
         String html=server.getPageByName("searchPage");
@@ -41,6 +62,11 @@ public class HtmlController {
 //        html=html.replace("?",Long.toString(userVo.getId()));
         return html;
     }
+    /*מקבלת: כלום.
+    מבצעת: מבקשת מ- HtmlServer את הדף שמציג את הפלייליסטים של המשתמש ומחליפה לכתובות ה-IP הרצויות.
+    מחזירה: את דף ה-HTML העדכני.
+    */
+
     @GetMapping("/getPlayListUser")
     public String getPlayListUser(){
         String html=server.getPageByName("showPlayList");
@@ -48,6 +74,11 @@ public class HtmlController {
 //        html=html.replace("?",Long.toString(userVo.getId()));
         return html;
     }
+
+    /*מקבלת: כלום.
+     מבצעת: מבקשת מ- HtmlServer את דף הבית ומחליפה לכתובות ה-IP הרצויות.
+     מחזירה: את דף ה-HTML העדכני.
+    */
     @GetMapping("/HomePage")
     public String getHomePage(){
         String html=server.getPageByName("HomePage");
@@ -55,6 +86,11 @@ public class HtmlController {
         //html=html.replace("?",Long.toString(userVo.getId()));
         return html;
     }
+
+    /*מקבלת: כלום.
+    מבצעת: מבקשת מ- HtmlServer את דף הצגת שירים בפלייליסט ומחליפה לכתובות ה-IP הרצויות.
+    מחזירה: את דף ה-HTML העדכני.
+    */
     @GetMapping("/displaySongInPlayList")
     public String getDisplaySongInPlayListPage(){
         String html=server.getPageByName("displaySongInPlayList");
@@ -63,6 +99,12 @@ public class HtmlController {
         //html=html.replace("@",Long.toString(playListVO.getUserId()));
         return html;
     }
+    /*
+    * מקבלת: כלום.
+    מבצעת: מבקשת מ- HtmlServer את דף הוספת אלבום למערכת ומחליפה לכתובות ה-IP הרצויות.
+    מחזירה: את דף ה-HTML העדכני.
+    */
+
     @GetMapping("/addAlbum")
     public String getAddAlbumPage(){
         String html=server.getPageByName("addAlbum");
@@ -70,6 +112,12 @@ public class HtmlController {
         //html=html.replace("?",Long.toString(userVo.getId()));
         return html;
     }
+
+    /*
+    * מקבלת: כלום.
+    מבצעת: מבקשת מ- HtmlServer את דף הצגת השירים של המשתמש ומחליפה לכתובות ה-IP הרצויות.
+    מחזירה: את דף ה-HTML העדכני.
+    */
     @GetMapping("/showUserSongs")
     public String getShowUserSongsPage(){
         String html=server.getPageByName("showUserSongs");
@@ -77,6 +125,12 @@ public class HtmlController {
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
+
+    /*
+    * מקבלת: כלום.
+    מבצעת: מבקשת מ- HtmlServer את הדף הוספת פלייליסט ומחליפה לכתובות ה-IP הרצויות.
+    מחזירה: את דף ה-HTML העדכני.
+    */
     @GetMapping("/addPlayList")
     public String getAddPlayListPage(){
         String html=server.getPageByName("addPlayList");
@@ -84,6 +138,12 @@ public class HtmlController {
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
+
+    /*
+    * מקבלת: כלום.
+    מבצעת: מבקשת מ- HtmlServer את הדף הוספת שירים לפלייליסט ומחליפה לכתובות ה-IP הרצויות.
+    מחזירה: את דף ה-HTML העדכני.
+    */
     @GetMapping("/addSongsToPlayList")
     public String getAddSongsToPlayListPage(){
         String html=server.getPageByName("addSongToPlayList");
@@ -92,6 +152,12 @@ public class HtmlController {
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
+
+    /*
+    * מקבלת: כלום.
+    מבצעת: מבקשת מ- HtmlServer את הדף ה- Authenticator ומחליפה לכתובות ה-IP הרצויות.
+    מחזירה: את דף ה-HTML העדכני.
+    */
     @GetMapping("/authenticator")
     public String getAuthenticatorPage(){
         String html=server.getPageByName("authenticator");
@@ -100,6 +166,11 @@ public class HtmlController {
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
+
+    /*מקבלת: כלום.
+    מבצעת: מבקשת מ- HtmlServer את הדף לניגון שיר ומחליפה לכתובות ה-IP הרצויות.
+    מחזירה: את דף ה-HTML העדכני.
+    */
     @GetMapping("/PlaySongPage")
     public String getPlaySongPage(){
         String html=server.getPageByName("playSong");
@@ -107,6 +178,12 @@ public class HtmlController {
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
+
+    /*
+    * מקבלת: כלום.
+    מבצעת: מבקשת מ- HtmlServer את הדף ניגון פלייליסט ומחליפה לכתובות ה-IP הרצויות.
+    מחזירה: את דף ה-HTML העדכני.
+    */
     @GetMapping("/PlayPlayList")
     public String getPlayPlayListPage(){
         String html=server.getPageByName("playPlayList");
@@ -114,6 +191,12 @@ public class HtmlController {
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
+    /*
+    * מקבלת: כלום.
+    מבצעת: מבקשת מ- HtmlServer את הדף ניגון אלבום ומחליפה לכתובות ה-IP הרצויות.
+    מחזירה: את דף ה-HTML העדכני.
+    */
+
     @GetMapping("/PlayAlbum")
     public String getPlayAlbumPage(){
         String html=server.getPageByName("playAlbum");
@@ -121,6 +204,11 @@ public class HtmlController {
         html=html.replace("localhost",IPServersMusic);
         return html;
     }
+
+    /*מקבלת: כלום.
+    מבצעת: מבקשת מ- HtmlServer את הדף הצגת שירים באלבום ומחליפה לכתובות ה-IP הרצויות.
+    מחזירה: את דף ה-HTML העדכני.
+    */
     @GetMapping("/displaySongInAlbum")
     public String getDisplaySongInAlbumPage(){
         String html=server.getPageByName("displaySongInAlbum");
